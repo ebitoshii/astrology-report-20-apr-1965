@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Celestial Blueprint — 20 April 1965</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Karla:wght@300;400;500&family=Inconsolata:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --jade: #1E5C47;
+  --jade-light: #2E8A6A;
+  --jade-dim: #3D7A62;
+  --jade-pale: #E8F4EF;
+  --cream: #FAF7F2;
+  --cream2: #F2EDE4;
+  --cream3: #E8E1D6;
+  --ink: #1A1208;
+  --ink2: #2E2418;
+  --earth: #8B6914;
+  --earth-light: #C9A84C;
+  --earth-pale: #FDF3DC;
+  --terra: #6B2E1A;
+  --terra-light: #C45A30;
+  --terra-pale: #FAECE6;
+  --slate: #5A5248;
+  --slate2: #8A8078;
+  --border: rgba(30,92,71,0.2);
+  --border2: rgba(30,92,71,0.1);
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Karla', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ─── HEADER ─── */
+.header {
+  background: var(--jade);
+  background-image: linear-gradient(160deg, #163D30 0%, #1E5C47 50%, #163D30 100%);
+  padding: 52px 40px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -40px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 300px;
+  background: radial-gradient(ellipse, rgba(201,168,76,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header-label {
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--earth-light);
+  margin-bottom: 16px;
+  opacity: 0.9;
+}
+.header-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 4.5vw, 52px);
+  font-weight: 300;
+  color: var(--cream);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+.header-title em { font-style: italic; color: var(--earth-light); }
+.header-meta { margin-top: 14px; font-size: 13px; color: rgba(232,244,239,0.6); letter-spacing: 0.05em; }
+.header-tags { margin-top: 22px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.header-tag {
+  font-size: 11px; font-family: 'Inconsolata', monospace;
+  padding: 4px 14px; border: 0.5px solid rgba(201,168,76,0.4);
+  border-radius: 20px; color: rgba(201,168,76,0.85); letter-spacing: 0.05em;
+}
+
+/* ─── NAV ─── */
+.nav {
+  background: var(--jade);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 0 40px;
+  display: flex; gap: 0;
+  overflow-x: auto; scrollbar-width: none;
+  position: sticky; top: 0; z-index: 50;
+}
+.nav::-webkit-scrollbar { display: none; }
+.nav-btn {
+  font-family: 'Karla', sans-serif; font-size: 12px; font-weight: 400;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: rgba(232,244,239,0.55);
+  padding: 14px 18px; border: none; background: transparent;
+  cursor: pointer; border-bottom: 2px solid transparent;
+  transition: all 0.2s; white-space: nowrap;
+}
+.nav-btn:hover { color: var(--cream); }
+.nav-btn.active { color: var(--earth-light); border-bottom-color: var(--earth-light); }
+
+/* ─── MAIN ─── */
+.main { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* ─── SECTION ─── */
+.section { margin-bottom: 36px; }
+.section-eyebrow {
+  font-family: 'Inconsolata', monospace; font-size: 9px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--jade-light); margin-bottom: 8px; opacity: 0.8;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 24px;
+  font-weight: 400; color: var(--ink);
+  margin-bottom: 20px; padding-bottom: 12px;
+  border-bottom: 1px solid var(--border2);
+}
+
+/* ─── GRIDS ─── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+@media (max-width: 700px) {
+  .grid-2,.grid-3,.grid-4 { grid-template-columns: 1fr; }
+  .nav { padding: 0 12px; }
+  .main { padding: 24px 16px 60px; }
+  .header { padding: 32px 20px 28px; }
+}
+@media (max-width: 900px) {
+  .grid-3 { grid-template-columns: 1fr 1fr; }
+  .grid-4 { grid-template-columns: 1fr 1fr; }
+}
+
+/* ─── CARDS ─── */
+.card {
+  background: #fff;
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius); padding: 18px 20px;
+}
+.card-jade { background: var(--jade-pale); border-color: rgba(30,92,71,0.3); }
+.card-earth { background: var(--earth-pale); border-color: rgba(201,168,76,0.35); }
+.card-terra { background: var(--terra-pale); border-color: rgba(107,46,26,0.25); }
+.card-label {
+  font-size: 10px; font-family: 'Inconsolata', monospace;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--slate2); margin-bottom: 6px;
+}
+.card-value { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--ink); margin-bottom: 4px; }
+.card-value.xl { font-size: 28px; }
+.card-sub { font-size: 12px; color: var(--slate2); line-height: 1.5; }
+
+/* ─── INSIGHTS ─── */
+.insight {
+  border-left: 2px solid; padding: 12px 16px; margin-bottom: 10px;
+  border-radius: 0 8px 8px 0;
+}
+.insight-jade { border-color: var(--jade-light); background: var(--jade-pale); }
+.insight-earth { border-color: var(--earth); background: var(--earth-pale); }
+.insight-terra { border-color: var(--terra-light); background: var(--terra-pale); }
+.insight-slate { border-color: #8A8078; background: #F5F2EE; }
+.insight-deep { border-color: #3D2B8A; background: #EEEDF8; }
+.insight h { font-size: 10px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 5px; }
+.insight-jade h { color: var(--jade); }
+.insight-earth h { color: var(--earth); }
+.insight-terra h { color: var(--terra); }
+.insight-slate h { color: var(--slate); }
+.insight-deep h { color: #3D2B8A; }
+.insight p { font-size: 13px; color: var(--ink2); line-height: 1.65; }
+
+/* ─── PILLARS ─── */
+.pillar-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+.pillar {
+  background: var(--jade);
+  border-radius: 10px; padding: 14px 10px; text-align: center;
+  border: 0.5px solid rgba(201,168,76,0.2);
+}
+.pillar-name { font-size: 9px; font-family: 'Inconsolata', monospace; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(201,168,76,0.6); margin-bottom: 8px; }
+.pillar-stem { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--earth-light); margin-bottom: 2px; }
+.pillar-branch { font-size: 13px; color: rgba(232,244,239,0.6); margin-bottom: 8px; }
+.pillar-animal { font-size: 26px; margin-bottom: 6px; }
+.pillar-element { font-size: 10px; font-family: 'Inconsolata', monospace; color: rgba(232,244,239,0.5); }
+.pillar-star { font-size: 10px; padding: 2px 8px; border-radius: 12px; margin-top: 6px; display: inline-block; }
+.star-earth { background: rgba(201,168,76,0.2); color: var(--earth-light); border: 0.5px solid rgba(201,168,76,0.4); }
+.star-jade { background: rgba(46,138,106,0.2); color: #7FCFB5; border: 0.5px solid rgba(46,138,106,0.4); }
+
+/* ─── METERS ─── */
+.meter-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.meter-label { font-size: 12px; color: var(--slate2); min-width: 130px; }
+.meter-track { flex: 1; height: 4px; background: var(--cream3); border-radius: 2px; }
+.meter-fill { height: 4px; border-radius: 2px; }
+.meter-val { font-size: 12px; font-family: 'Inconsolata', monospace; color: var(--jade); min-width: 28px; text-align: right; }
+
+/* ─── ELEMENT BARS ─── */
+.element-row { margin-bottom: 12px; }
+.element-name { font-size: 11px; font-family: 'Inconsolata', monospace; color: var(--slate2); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.08em; }
+.element-track { height: 8px; background: var(--cream3); border-radius: 4px; overflow: hidden; }
+.element-fill { height: 100%; border-radius: 4px; }
+
+/* ─── PILLS ─── */
+.pills { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.pill { font-size: 11px; font-family: 'Inconsolata', monospace; padding: 3px 10px; border-radius: 20px; border: 0.5px solid; }
+.pill-jade { background: var(--jade-pale); border-color: rgba(30,92,71,0.4); color: var(--jade); }
+.pill-earth { background: var(--earth-pale); border-color: rgba(201,168,76,0.5); color: var(--earth); }
+.pill-terra { background: var(--terra-pale); border-color: rgba(107,46,26,0.3); color: var(--terra); }
+.pill-slate { background: #F0EDE8; border-color: rgba(90,82,72,0.3); color: var(--slate); }
+.pill-deep { background: #EEEDF8; border-color: rgba(61,43,138,0.3); color: #3D2B8A; }
+
+/* ─── SCORE GRID ─── */
+.score-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 20px 0; }
+.score-cell { text-align: center; padding: 16px 8px; }
+.score-num { font-family: 'Cormorant Garamond', serif; font-size: 38px; color: var(--jade); line-height: 1; margin-bottom: 4px; }
+.score-label { font-size: 11px; color: var(--slate2); font-family: 'Inconsolata', monospace; letter-spacing: 0.06em; }
+
+/* ─── COMPASS ─── */
+.compass-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 14px 0; }
+.compass-dir { border-radius: 8px; padding: 10px 14px; border: 0.5px solid; }
+.compass-good { background: var(--jade-pale); border-color: rgba(30,92,71,0.35); }
+.compass-bad { background: var(--terra-pale); border-color: rgba(107,46,26,0.3); }
+.compass-dir-title { font-size: 12px; font-weight: 500; margin-bottom: 2px; }
+.compass-good .compass-dir-title { color: var(--jade); }
+.compass-bad .compass-dir-title { color: var(--terra); }
+.compass-dir-sub { font-size: 11px; color: var(--slate2); }
+
+/* ─── TIMELINE ─── */
+.timeline { border-left: 1px solid var(--border); padding-left: 24px; }
+.tl-item { position: relative; margin-bottom: 20px; }
+.tl-dot { position: absolute; left: -30px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: var(--jade-light); opacity: 0.7; }
+.tl-period { font-size: 10px; font-family: 'Inconsolata', monospace; color: var(--jade); letter-spacing: 0.08em; margin-bottom: 3px; }
+.tl-text { font-size: 13px; color: var(--slate); line-height: 1.6; }
+
+/* ─── BOXES ─── */
+.warn-box {
+  background: var(--terra-pale); border: 0.5px solid rgba(107,46,26,0.3);
+  border-radius: 8px; padding: 12px 16px; font-size: 13px;
+  color: var(--ink2); line-height: 1.6; margin: 10px 0;
+}
+.good-box {
+  background: var(--jade-pale); border: 0.5px solid rgba(30,92,71,0.3);
+  border-radius: 8px; padding: 12px 16px; font-size: 13px;
+  color: var(--ink2); line-height: 1.6; margin: 10px 0;
+}
+.highlight-box {
+  background: var(--earth-pale); border: 1px solid rgba(201,168,76,0.35);
+  border-radius: var(--radius); padding: 20px; margin: 16px 0;
+}
+.highlight-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--earth); margin-bottom: 10px; }
+.highlight-body { font-size: 13px; color: var(--ink2); line-height: 1.7; }
+
+/* ─── DIV ─── */
+.div { border: none; border-top: 1px solid var(--border2); margin: 24px 0; }
+
+/* ─── TABLE ─── */
+.data-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.data-table th { text-align: left; padding: 8px 12px; color: var(--jade); font-family: 'Inconsolata', monospace; font-size: 10px; letter-spacing: 0.1em; font-weight: 400; border-bottom: 1px solid var(--border); }
+.data-table td { padding: 10px 12px; border-bottom: 1px solid var(--border2); }
+.data-table tr:last-child td { border-bottom: none; }
+
+/* ─── DISCLAIMER ─── */
+.disclaimer {
+  text-align: center; padding: 24px; font-size: 11px; color: var(--slate2);
+  border-top: 1px solid var(--border2); margin-top: 60px; line-height: 1.6;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">Celestial Blueprint · Personal Reading</div>
+  <h1 class="header-title">The <em>Wisdom</em> of<br>20 April 1965</h1>
+  <p class="header-meta">~1:30 PM · Singapore · GMT +8</p>
+  <div class="header-tags">
+    <span class="header-tag">☉ Taurus</span>
+    <span class="header-tag">☽ Capricorn</span>
+    <span class="header-tag">↑ Virgo</span>
+    <span class="header-tag">🐍 Wood Snake</span>
+    <span class="header-tag">乙木 Yi Wood</span>
+    <span class="header-tag">Kua 7</span>
+  </div>
+</div>
+
+<nav class="nav">
+  <button class="nav-btn active" onclick="show('overview',this)">Overview</button>
+  <button class="nav-btn" onclick="show('systems',this)">The 3 Systems</button>
+  <button class="nav-btn" onclick="show('wealth',this)">Wealth & Trading</button>
+  <button class="nav-btn" onclick="show('career',this)">Career</button>
+  <button class="nav-btn" onclick="show('relationships',this)">Relationships</button>
+  <button class="nav-btn" onclick="show('family',this)">Family</button>
+  <button class="nav-btn" onclick="show('fengshui',this)">Feng Shui</button>
+  <button class="nav-btn" onclick="show('forecast2026',this)">2026 Forecast</button>
+  <button class="nav-btn" onclick="show('forecast2027',this)">2027 Forecast</button>
+</nav>
+
+<main class="main">
+
+<!-- ════════════ OVERVIEW ════════════ -->
+<div id="panel-overview" class="panel active">
+  <div class="section">
+    <div class="section-eyebrow">Celestial Snapshot</div>
+    <div class="section-title">Your Complete Cosmic Profile</div>
+
+    <div class="grid-3" style="margin-bottom:16px;">
+      <div class="card card-deep" style="background:#EEEDF8; border-color:rgba(61,43,138,0.25);">
+        <div class="card-label">Western — The Big Three</div>
+        <div class="card-value">Taurus ☉</div>
+        <div class="card-sub">Capricorn ☽ · Virgo ↑<br>Earth trifecta — rare triple Earth alignment</div>
+      </div>
+      <div class="card card-terra">
+        <div class="card-label">Chinese Zodiac</div>
+        <div class="card-value">Wood Snake 🐍</div>
+        <div class="card-sub">Yi Si 乙巳 · Yin Wood<br>Jan 21 1965 – Feb 8 1966</div>
+      </div>
+      <div class="card card-jade">
+        <div class="card-label">BaZi Day Master</div>
+        <div class="card-value">Yi Wood 乙</div>
+        <div class="card-sub">The Vine · Yin Wood<br>Pillar: Yi Chou 乙丑 (Wood Ox)</div>
+      </div>
+    </div>
+
+    <div class="pillar-grid" style="margin-bottom:20px;">
+      <div class="pillar">
+        <div class="pillar-name">Year Pillar</div>
+        <div class="pillar-stem">乙 Yi</div>
+        <div class="pillar-branch">巳 Si</div>
+        <div class="pillar-animal">🐍</div>
+        <div class="pillar-element">Yin Wood Snake</div>
+        <span class="pillar-star star-earth">Ancestry</span>
+      </div>
+      <div class="pillar">
+        <div class="pillar-name">Month Pillar</div>
+        <div class="pillar-stem">庚 Geng</div>
+        <div class="pillar-branch">辰 Chen</div>
+        <div class="pillar-animal">🐉</div>
+        <div class="pillar-element">Yang Metal Dragon</div>
+        <span class="pillar-star star-jade">Career</span>
+      </div>
+      <div class="pillar">
+        <div class="pillar-name">Day Pillar · Self</div>
+        <div class="pillar-stem">乙 Yi</div>
+        <div class="pillar-branch">丑 Chou</div>
+        <div class="pillar-animal">🐂</div>
+        <div class="pillar-element">Yin Wood Ox</div>
+        <span class="pillar-star star-earth">Day Master</span>
+      </div>
+      <div class="pillar">
+        <div class="pillar-name">Hour Pillar</div>
+        <div class="pillar-stem">乙 Yi</div>
+        <div class="pillar-branch">未 Wei</div>
+        <div class="pillar-animal">🐐</div>
+        <div class="pillar-element">Yin Wood Goat</div>
+        <span class="pillar-star star-jade">Legacy</span>
+      </div>
+    </div>
+
+    <div class="section-eyebrow">Five Element Balance</div>
+    <div style="margin-bottom:20px;">
+      <div class="element-row">
+        <div class="element-name">Wood 木 — Dominant (self × 3)</div>
+        <div class="element-track"><div class="element-fill" style="width:85%; background:#2E8A6A;"></div></div>
+      </div>
+      <div class="element-row">
+        <div class="element-name">Earth 土 — Strong (output/wealth)</div>
+        <div class="element-track"><div class="element-fill" style="width:65%; background:#8B6914;"></div></div>
+      </div>
+      <div class="element-row">
+        <div class="element-name">Metal 金 — Present (authority)</div>
+        <div class="element-track"><div class="element-fill" style="width:40%; background:#8A8078;"></div></div>
+      </div>
+      <div class="element-row">
+        <div class="element-name">Fire 火 — Hidden (Snake branch)</div>
+        <div class="element-track"><div class="element-fill" style="width:30%; background:#C94040;"></div></div>
+      </div>
+      <div class="element-row">
+        <div class="element-name">Water 水 — Weak (resource)</div>
+        <div class="element-track"><div class="element-fill" style="width:15%; background:#2D5FA8;"></div></div>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-label">Lucky Elements</div>
+        <div class="pills">
+          <span class="pill pill-terra">Fire</span>
+          <span class="pill pill-slate">Earth</span>
+        </div>
+        <div class="card-sub">Yi Wood produces Fire; Earth is wealth for Wood Day Master</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Challenging Elements</div>
+        <div class="pills">
+          <span class="pill pill-earth">Metal (excess)</span>
+          <span class="pill pill-jade">Wood (overcrowds)</span>
+        </div>
+        <div class="card-sub">Too much Metal cuts Wood; too much Wood weakens Earth wealth</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Life Path Number</div>
+        <div class="card-value xl" style="color:var(--jade);">9</div>
+        <div class="card-sub">2+0+4+1+9+6+5 = 27 → 2+7 = 9 · Wisdom, completion, service</div>
+      </div>
+    </div>
+
+    <hr class="div">
+
+    <div class="highlight-box">
+      <div class="highlight-title">⭐ The Rare Triple Earth: Taurus Sun + Capricorn Moon + Virgo Rising</div>
+      <div class="highlight-body">This is one of the rarest and most powerful western chart signatures — all three primary chart points in Earth signs. Taurus Sun (Fixed Earth), Capricorn Moon (Cardinal Earth), Virgo Rising (Mutable Earth). This creates a man of extraordinary groundedness, patience, long-term thinking, material mastery, and quiet but formidable authority. Combined with a Yi Wood BaZi Day Master — the flexible, adaptive vine that bends without breaking — this chart describes someone who builds lasting structures through persistence, intelligence, and the ability to find the cracks in any wall.</div>
+    </div>
+
+    <div class="section-eyebrow" style="margin-top:20px;">Overall Fortune Scores</div>
+    <div class="score-grid">
+      <div class="score-cell card"><div class="score-num">9.0</div><div class="score-label">Career</div></div>
+      <div class="score-cell card"><div class="score-num">8.5</div><div class="score-label">Wealth</div></div>
+      <div class="score-cell card"><div class="score-num">7.0</div><div class="score-label">Trading</div></div>
+      <div class="score-cell card"><div class="score-num">8.0</div><div class="score-label">Relationships</div></div>
+      <div class="score-cell card"><div class="score-num">8.8</div><div class="score-label">Family</div></div>
+      <div class="score-cell card"><div class="score-num">8.0</div><div class="score-label">2026 Overall</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ THE 3 SYSTEMS ════════════ -->
+<div id="panel-systems" class="panel">
+  <div class="section">
+    <div class="section-eyebrow">How the Three Systems Read This Chart</div>
+    <div class="section-title">Western · BaZi · Feng Shui — Unified</div>
+
+    <div class="grid-3" style="margin-bottom:24px;">
+      <div class="card" style="background:#EEEDF8; border-color:rgba(61,43,138,0.2);">
+        <div style="font-size:22px; margin-bottom:10px;">🌍</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:17px; margin-bottom:8px;">Western Astrology</div>
+        <div style="font-size:12px; color:var(--slate2); line-height:1.6;">
+          <strong style="color:var(--ink); font-weight:500;">Origin:</strong> Greco-Babylonian, ~400 BC<br>
+          <strong style="color:var(--ink); font-weight:500;">What it reads:</strong> Planetary positions at birth mapped to tropical zodiac<br>
+          <strong style="color:var(--ink); font-weight:500;">Core tools:</strong> Sun, Moon, Rising, 12 Houses, aspects<br>
+          <strong style="color:var(--ink); font-weight:500;">Reveals:</strong> Personality, emotional nature, relational patterns, life themes<br>
+          <strong style="color:var(--ink); font-weight:500;">Key finding:</strong> Triple Earth = builder, realist, accumulator of lasting value
+        </div>
+      </div>
+      <div class="card card-terra">
+        <div style="font-size:22px; margin-bottom:10px;">☯️</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:17px; margin-bottom:8px;">Chinese BaZi</div>
+        <div style="font-size:12px; color:var(--slate2); line-height:1.6;">
+          <strong style="color:var(--ink); font-weight:500;">Origin:</strong> China, Song Dynasty ~960 AD<br>
+          <strong style="color:var(--ink); font-weight:500;">What it reads:</strong> Birth moment as 8 Chinese solar calendar characters<br>
+          <strong style="color:var(--ink); font-weight:500;">Core tools:</strong> Four Pillars, Five Elements, Ten Gods, Luck Pillars<br>
+          <strong style="color:var(--ink); font-weight:500;">Reveals:</strong> Destiny structure, elemental strengths, 10-year fortune cycles<br>
+          <strong style="color:var(--ink); font-weight:500;">Key finding:</strong> Yi Wood — adaptive, strategic, persistent, relationship-driven
+        </div>
+      </div>
+      <div class="card card-jade">
+        <div style="font-size:22px; margin-bottom:10px;">🧭</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:17px; margin-bottom:8px;">Feng Shui</div>
+        <div style="font-size:12px; color:var(--slate2); line-height:1.6;">
+          <strong style="color:var(--ink); font-weight:500;">Origin:</strong> China, Han Dynasty ~202 BC<br>
+          <strong style="color:var(--ink); font-weight:500;">What it reads:</strong> Environmental Qi management through spatial alignment<br>
+          <strong style="color:var(--ink); font-weight:500;">Core tools:</strong> Kua 7, Eight Mansions, Flying Stars, Ba Gua<br>
+          <strong style="color:var(--ink); font-weight:500;">Reveals:</strong> Auspicious directions for wealth, health, relationships<br>
+          <strong style="color:var(--ink); font-weight:500;">Key finding:</strong> Kua 7 West Group — NW, West, SW, NE are power directions
+        </div>
+      </div>
+    </div>
+
+    <hr class="div">
+    <div class="section-eyebrow">Cross-System Comparison</div>
+    <div style="overflow-x:auto; margin-top:12px;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Domain</th>
+            <th style="color:#3D2B8A;">Western Says</th>
+            <th style="color:var(--terra);">BaZi Says</th>
+            <th style="color:var(--jade);">Combined Verdict</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color:var(--slate2);">Core nature</td>
+            <td style="color:var(--ink2);">Triple Earth — patient, material, grounded</td>
+            <td style="color:var(--ink2);">Yi Wood — flexible, adaptive, strategic</td>
+            <td style="color:var(--jade);">The quiet strategist who outlasts everyone</td>
+          </tr>
+          <tr>
+            <td style="color:var(--slate2);">Career peak</td>
+            <td style="color:var(--ink2);">Virgo MC — mastery, craft, service excellence</td>
+            <td style="color:var(--ink2);">Metal Dragon month — authority from discipline</td>
+            <td style="color:var(--jade);">Excellence through expertise, not showmanship</td>
+          </tr>
+          <tr>
+            <td style="color:var(--slate2);">Wealth</td>
+            <td style="color:var(--ink2);">Taurus Sun — accumulation, steady building</td>
+            <td style="color:var(--ink2);">Earth = wealth for Yi Wood — strategic patience</td>
+            <td style="color:var(--jade);">Wealth through expertise, land, long holds</td>
+          </tr>
+          <tr>
+            <td style="color:var(--slate2);">Trading</td>
+            <td style="color:var(--ink2);">Capricorn Moon — disciplined, not speculative</td>
+            <td style="color:var(--ink2);">Yi Wood avoids Metal years (cuts wealth)</td>
+            <td style="color:var(--jade);">Structured, rule-based approach only</td>
+          </tr>
+          <tr>
+            <td style="color:var(--slate2);">Relationships</td>
+            <td style="color:var(--ink2);">Venus in Taurus — loyal, sensual, stable</td>
+            <td style="color:var(--ink2);">Chou Ox spouse palace — dutiful, reliable wife</td>
+            <td style="color:var(--jade);">Steady, devoted; slow to open, loyal for life</td>
+          </tr>
+          <tr>
+            <td style="color:var(--slate2);">Family</td>
+            <td style="color:var(--ink2);">Cancer 11th house community; Capricorn roots</td>
+            <td style="color:var(--ink2);">Triple Yi Wood — strong lineage consciousness</td>
+            <td style="color:var(--jade);">Deep family responsibility; legacy-oriented man</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="div">
+    <div class="insight insight-earth">
+      <h>The Dominant Theme Across All Three Systems</h>
+      <p>Every system confirms the same archetype: <strong>the patient, methodical builder who creates lasting value through expertise, discipline, and quiet persistence.</strong> Taurus-Capricorn-Virgo in the west; Yi Wood producing Earth wealth in BaZi; Kua 7 West Group stability in Feng Shui. This is not a chart of explosive brilliance or dramatic reinvention — it is a chart of <em>compounding</em>. Things built here last. Relationships formed here endure. Wealth accumulated here holds. The greatest risk is impatience — and the greatest reward is time.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ WEALTH & TRADING ════════════ -->
+<div id="panel-wealth" class="panel">
+  <div class="section">
+    <div class="section-eyebrow">Wealth Analysis — All Systems</div>
+    <div class="section-title">Money, Fortune & Speculative Trading</div>
+
+    <div class="section-eyebrow">Western Astrology</div>
+
+    <div class="insight insight-deep"><h>Taurus Sun — The Natural Accumulator</h><p>Taurus is ruled by Venus, the planet of value, beauty, and material pleasure. The Taurus Sun instinctively understands the relationship between patience and wealth. Money is not spent impulsively — it is accumulated carefully, enjoyed sensually, and invested in things of lasting tangible value: property, land, quality assets, long-term holdings. The Taurus approach to wealth is fundamentally conservative — seek safety, build slowly, hold long. Jupiter also resided in Taurus in 1965, massively amplifying this natural wealth-building instinct with optimism, luck, and the capacity for genuine material abundance.</p></div>
+
+    <div class="insight insight-slate"><h>Capricorn Moon — Disciplined Financial Instincts</h><p>The Capricorn Moon governs the emotional relationship with money — and Capricorn is perhaps the most financially disciplined of all Moon signs. Emotional security comes from material structure: savings, plans, long-term commitments, and the satisfaction of watching wealth compound over decades. He is not tempted by get-rich-quick schemes because his emotional self finds them intellectually offensive. The Capricorn Moon gives a natural ability to delay gratification — the most powerful wealth-building trait in existence.</p></div>
+
+    <div class="insight insight-jade"><h>Virgo Rising — Midheaven in Gemini; 2nd House in Libra</h><p>With Virgo Rising, the 2nd house of personal wealth falls in Libra, ruled by Venus (also Taurus ruler) — a double Venus signature for wealth attraction through partnerships, fair exchange, and harmonious negotiations. Wealth often comes through relationships, collaborations, and deals. Venus also rules the 9th house (higher learning, foreign connections) for this chart — indicating financial gains through expertise, international involvement, or advisory relationships.</p></div>
+
+    <hr class="div">
+    <div class="section-eyebrow">BaZi Chinese Astrology</div>
+
+    <div class="insight insight-terra"><h>Yi Wood Day Master — Earth is Wealth</h><p>For Yi Wood (乙木), the element that the Day Master controls is Earth (土). Direct Wealth = Ji Earth (己) — stable, steady, earned income from reliable work. Indirect Wealth = Wu Earth (戊) — large assets, entrepreneurial income, real estate, and windfalls. The chart carries significant Earth in the Ox and Dragon branches — meaning wealth stars are well-rooted and structurally embedded. This is one of the most favourable wealth configurations for Yi Wood: Earth wealth is accessible, tangible, and buildable. Real estate and land-connected assets are particularly well-starred.</p></div>
+
+    <div class="insight insight-jade"><h>Metal Dragon Month Pillar — Wealth Authority Star</h><p>The Month Pillar (Geng Chen 庚辰) carries Geng Metal (庚) in the Heavenly Stem — for Yi Wood, this is the Seven Killings (七煞) star, representing authority, discipline, and career-driven achievement. Geng Metal cuts and refines Yi Wood — this creates the pattern of a person who excels under pressure and achieves their best work when given challenging, structured environments. The Dragon (辰) branch contains hidden Wu Earth (Indirect Wealth), Yi Wood (self), and Gui Water (resource) — a complex and productive blend.</p></div>
+
+    <div class="insight insight-earth"><h>Triple Yi Wood Heavenly Stems — Wood Dominance</h><p>A remarkable feature of this chart: Yi Wood appears in <em>three</em> Heavenly Stems — Year (Yi), Day (Yi), and Hour (Yi). This creates an extremely Wood-dominant chart. Yi Wood is the vine or flower — adaptable, persistent, able to find and exploit any available support structure. However, Wood-heavy charts must manage the risk of over-expansion and difficulty concentrating resources. The key is to ensure sufficient Earth (wealth) and Fire (output) in the environment to channel this Wood energy productively.</p></div>
+
+    <hr class="div">
+    <div class="section-eyebrow">Speculative Trading — Combined Analysis</div>
+
+    <div class="highlight-box">
+      <div class="highlight-title">Composite Verdict: Structured Conservative — Not a Natural Speculator</div>
+      <div class="highlight-body">Both systems converge strongly: this is a chart built for long-term wealth accumulation through expertise and patience, not short-term trading. The Taurus-Capricorn-Virgo earth triple provides extraordinary capacity for buy-and-hold, real estate, and expertise-based investing. The Yi Wood BaZi Day Master with rooted Earth wealth stars confirms: wealth comes through substance, not speculation. Trading can work — but only with rigorous structure, defined risk parameters, and a focus on high-probability setups, never emotional or discretionary entries. The Capricorn Moon is the chart's most valuable trading asset: it can enforce discipline that most charts cannot.</div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:16px;">
+      <div class="card card-jade">
+        <div class="card-label">Trading strengths</div>
+        <div style="margin-top:8px;">
+          <div class="insight insight-jade" style="margin-bottom:6px;"><h>Iron discipline</h><p>Capricorn Moon + Virgo Rising = the most naturally disciplined chart combination for rule-following. When he has a system, he follows it.</p></div>
+          <div class="insight insight-jade" style="margin-bottom:6px;"><h>Long-term pattern recognition</h><p>Taurus patience + Yi Wood strategic thinking = ability to see patterns that develop over weeks/months, not minutes. Thrives on position trades.</p></div>
+          <div class="insight insight-jade"><h>Risk-averse by nature</h><p>Never enters without a clear thesis. Doesn't chase. This natural conservatism protects capital more than any rule set could.</p></div>
+        </div>
+      </div>
+      <div class="card card-terra">
+        <div class="card-label">Trading vulnerabilities</div>
+        <div style="margin-top:8px;">
+          <div class="insight insight-terra" style="margin-bottom:6px;"><h>Paralysis under uncertainty</h><p>Virgo Rising + Yi Wood caution = overanalysis. Can miss entries because of wanting "one more confirmation." System must have defined entry triggers.</p></div>
+          <div class="insight insight-terra" style="margin-bottom:6px;"><h>Slow to cut losers</h><p>Taurus stubbornness + Earth patience = holding losing positions too long, waiting for a return to cost. Defined stop-losses are non-negotiable.</p></div>
+          <div class="insight insight-terra"><h>Risk underestimation in favourable periods</h><p>Extended winning streaks lead to overconfidence — the Taurus tendency to "know" the market after a good run. Position size limits must be pre-set.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="warn-box">⚠️ BaZi warning: Metal years and Metal-dominant luck pillars represent the Seven Killings for Yi Wood — increased pressure, unexpected obstacles, and higher risk of financial loss. During Metal-heavy periods (Metal Ox, Metal Rooster years), reduce speculative exposure significantly.</div>
+    <div class="good-box">✓ Best trading approach: Longer time-frame, position-based strategies with defined entry rules, pre-set stops, and a hard limit on position size. This chart's discipline capacity is its greatest trading asset — the system must be built to utilise it.</div>
+
+    <div class="grid-2" style="margin-top:16px;">
+      <div class="card card-jade">
+        <div class="card-label">Favourable trading periods</div>
+        <div class="pills" style="margin-top:8px;">
+          <span class="pill pill-terra">Fire years (2026, 2027)</span>
+          <span class="pill pill-slate">Earth years</span>
+          <span class="pill pill-jade">Wood months (spring)</span>
+        </div>
+        <div class="card-sub" style="margin-top:8px;">Fire is Yi Wood's natural output — expression, confidence, decisiveness. Earth = Wealth appearing. Both energise the chart positively.</div>
+      </div>
+      <div class="card card-terra">
+        <div class="card-label">Challenging trading periods</div>
+        <div class="pills" style="margin-top:8px;">
+          <span class="pill pill-slate">Metal years/months</span>
+          <span class="pill pill-jade">Excess Wood</span>
+        </div>
+        <div class="card-sub" style="margin-top:8px;">Metal cuts Yi Wood — authority pressure, career friction, financial stress. Use these periods for review and conservatism, not expansion.</div>
+      </div>
+    </div>
+
+    <hr class="div">
+    <div class="section-eyebrow">Wealth Scores</div>
+    <div class="meter-row"><span class="meter-label">Earning potential</span><div class="meter-track"><div class="meter-fill" style="width:88%; background:var(--jade-light);"></div></div><span class="meter-val">8.8</span></div>
+    <div class="meter-row"><span class="meter-label">Wealth accumulation</span><div class="meter-track"><div class="meter-fill" style="width:85%; background:var(--jade-light);"></div></div><span class="meter-val">8.5</span></div>
+    <div class="meter-row"><span class="meter-label">Property / real estate</span><div class="meter-track"><div class="meter-fill" style="width:90%; background:var(--jade-light);"></div></div><span class="meter-val">9.0</span></div>
+    <div class="meter-row"><span class="meter-label">Trading aptitude</span><div class="meter-track"><div class="meter-fill" style="width:70%; background:var(--earth);"></div></div><span class="meter-val">7.0</span></div>
+    <div class="meter-row"><span class="meter-label">Investment discipline</span><div class="meter-track"><div class="meter-fill" style="width:88%; background:var(--jade-light);"></div></div><span class="meter-val">8.8</span></div>
+    <div class="meter-row"><span class="meter-label">Long-term security</span><div class="meter-track"><div class="meter-fill" style="width:90%; background:var(--jade-light);"></div></div><span class="meter-val">9.0</span></div>
+  </div>
+</div>
+
+<!-- ════════════ CAREER ════════════ -->
+<div id="panel-career" class="panel">
+  <div class="section">
+    <div class="section-eyebrow">Career Analysis — All Systems</div>
+    <div class="section-title">Vocation, Purpose & Professional Path</div>
+
+    <div class="insight insight-deep"><h>Virgo Rising — Gemini Midheaven: The Expert Communicator</h><p>With Virgo Rising, the Midheaven (career apex and public reputation) falls in Gemini — ruled by Mercury. This creates a professional identity built around intellectual versatility, communication excellence, and analytical mastery. Mercury-ruled careers encompass: finance and analysis, writing and communication, advisory services, trading and markets, education, and data-intensive fields. The Virgo Ascendant demands precision, craft, and genuine expertise — this man is most respected when he is unambiguously the most knowledgeable person in the room. Career peak arrives through demonstrated mastery, not political networking or showmanship.</p></div>
+
+    <div class="insight insight-earth"><h>Taurus Sun + Jupiter in Taurus — The Value Creator</h><p>The Taurus Sun with Jupiter conjunct (or very close) in 1965 creates a powerful financial and material intelligence — an instinctive grasp of value, assets, and how to build lasting enterprise. Best career domains: finance, investment, property, banking, asset management, agriculture, luxury goods, or any field where identifying genuine long-term value is the core skill. Jupiter expands and amplifies — this combination suggests a career that grows steadily in scope and influence, often reaching its most significant expression after age 40.</p></div>
+
+    <div class="insight insight-jade"><h>Capricorn Moon — The Disciplined Authority</h><p>The emotional self craves structure, responsibility, and achievement. The Capricorn Moon man is driven to build institutional standing — he wants to be the authority figure, the elder statesman, the person whose judgment is sought and respected. He works with exceptional discipline and does not resent the years of effort required to reach the top. Saturn rewards patience, and this Moon sign has patience in abundance. Career achievements feel most meaningful when they are earned through genuine service and long-term commitment, not shortcuts.</p></div>
+
+    <div class="insight insight-terra"><h>Yi Wood Day Master — The Strategic Climber</h><p>Yi Wood is the vine: it does not grow in a straight line, but it always finds a way to the light. In career terms, this means a man who adapts his path intelligently, leverages relationships and support structures, and advances through strategic positioning rather than direct confrontation. He excels in careers that reward long-term relationship-building, persistent expertise development, and the ability to navigate complex environments. Yi Wood people often achieve more than their initial circumstances suggested was possible — because they are masterful at identifying and using available opportunities.</p></div>
+
+    <div class="insight insight-jade"><h>Wood Snake — The Intellectual Professional</h><p>Wood Snakes are drawn to careers that reward insight, elegance, and strategic thinking. Ideal fields include philosophy, psychology, finance, scientific research, writing, fine arts, law, and diplomacy. They possess quiet confidence and a natural authority derived from intellectual depth. The Snake's patience and strategic mind suit long-term career arcs — steady progress, selective advancement, and a preference for depth over breadth. They are outstanding in advisory, consulting, and expert witness roles where their capacity to understand complex systems is the primary value.</p></div>
+
+    <div class="section-eyebrow" style="margin-top:20px;">Best Career Domains</div>
+    <div class="pills" style="margin-bottom:20px;">
+      <span class="pill pill-earth">Finance / Investment</span>
+      <span class="pill pill-earth">Asset Management</span>
+      <span class="pill pill-jade">Advisory / Consulting</span>
+      <span class="pill pill-jade">Research / Analysis</span>
+      <span class="pill pill-terra">Law / Governance</span>
+      <span class="pill pill-terra">Property / Real Estate</span>
+      <span class="pill pill-slate">Education / Academia</span>
+      <span class="pill pill-deep">Strategy / Planning</span>
+      <span class="pill pill-deep">Banking / Regulation</span>
+    </div>
+
+    <div class="good-box">✓ Career timing at age 61 (2026): Jupiter returns to the natal Jupiter in Taurus zone — a powerful cycle of expansion, recognition, and harvest after decades of patient building. This is the decade of genuine institutional authority. The reputation built over 30+ years is reaching its fullest expression.</div>
+
+    <hr class="div">
+    <div class="section-eyebrow">Career Scores</div>
+    <div class="meter-row"><span class="meter-label">Expertise depth</span><div class="meter-track"><div class="meter-fill" style="width:92%; background:var(--jade-light);"></div></div><span class="meter-val">9.2</span></div>
+    <div class="meter-row"><span class="meter-label">Leadership authority</span><div class="meter-track"><div class="meter-fill" style="width:85%; background:var(--jade-light);"></div></div><span class="meter-val">8.5</span></div>
+    <div class="meter-row"><span class="meter-label">Strategic adaptability</span><div class="meter-track"><div class="meter-fill" style="width:88%; background:var(--jade-light);"></div></div><span class="meter-val">8.8</span></div>
+    <div class="meter-row"><span class="meter-label">Long-term reputation</span><div class="meter-track"><div class="meter-fill" style="width:90%; background:var(--jade-light);"></div></div><span class="meter-val">9.0</span></div>
+  </div>
+</div>
+
+<!-- ════════════ RELATIONSHIPS ════════════ -->
+<div id="panel-relationships" class="panel">
+  <div class="section">
+    <div class="section-eyebrow">Relationships — All Systems</div>
+    <div class="section-title">Love, Romance & Partnership</div>
+
+    <div class="insight insight-earth"><h>Venus in Taurus — The Devoted, Sensual Lover</h><p>Venus in Taurus is perhaps the most loyal and sensually devoted placement in the zodiac. In love, he values stability, physical affection, shared comfort, and the slow, deep building of trust over time. He is not interested in dramatic or unstable relationships — he wants a partnership built to last. Generous in affection and material provision, he expresses love through acts of service, gift-giving, and creating physical security. The shadow side is possessiveness — the Taurus tendency to treat a partner as "his" in a way that can feel controlling. Stubbornness in conflict is another growth edge.</p></div>
+
+    <div class="insight insight-slate"><h>Capricorn Moon — Reserved but Rock-Solid</h><p>The Capricorn Moon creates an emotional style that appears reserved, controlled, and sometimes distant — particularly in early relationship stages. He does not easily display vulnerability and may come across as emotionally unavailable to partners who need expressive warmth. However, beneath the cool exterior is a man of extraordinary emotional loyalty and depth. Once committed, he provides stability, reliability, and quiet devotion that outlasts any more dramatic love. His emotional security comes from structure — he needs to feel that the relationship has a clear, shared direction and mutual long-term purpose.</p></div>
+
+    <div class="insight insight-jade"><h>Virgo Rising — 7th House in Pisces: The Soulful Partnership</h><p>The 7th house (marriage and partnership) falls in Pisces for Virgo Rising — ruled by Neptune and Jupiter. This is a deeply significant placement: the man with outward Virgo practicality and precision is drawn to a wife who is artistic, intuitive, empathetic, spiritual, or creatively expressive. Opposites attract here in a fundamental way — his Earth groundedness balances her Water sensitivity. He is most fulfilled when his wife occupies a very different emotional space: where he is logical, she is intuitive; where he is structured, she flows. This polarity creates depth and lasting fascination.</p></div>
+
+    <div class="insight insight-terra"><h>BaZi Spouse Palace: Chou Ox (丑) — The Wife's Archetype</h><p>The Day Branch Chou (Ox) represents the spouse palace. For a male Yi Wood Day Master, the wife is represented by Wu Earth (戊) as Indirect Wealth and Ji Earth (己) as Direct Wealth. The Ox branch contains hidden Gui Water (resource/mother energy), Xin Metal (Officer — authority), and Ji Earth (Direct Wealth/wife). This suggests a wife who is disciplined, hardworking, practically capable, and emotionally grounding. The Chou-Si-You (Ox-Snake-Rooster) Metal combination is hidden within — indicating a wife with her own quiet authority and practical competence. A deeply compatible partner would share the chart's love of quality, substance, and long-term thinking.</p></div>
+
+    <div class="insight insight-jade"><h>Wood Snake Love Pattern</h><p>Wood Snakes feel deeply but reveal slowly. They require significant trust to be built before genuine emotional intimacy is offered — and they hold back their vulnerability until they are certain of a partner's reliability. In long-term relationships, Wood Snakes are loyal, attentive, and quietly devoted. Their challenge is jealousy and possessiveness — a Snake quality amplified by Wood's attachment to what it has climbed. They may be slow to forgive perceived betrayals. The ideal partner respects their need for space to think, appreciates their depth over their surface charm, and provides patient, consistent emotional warmth.</p></div>
+
+    <div class="grid-2" style="margin-top:20px; margin-bottom:16px;">
+      <div class="card">
+        <div class="card-label">Best partner matches (western)</div>
+        <div class="pills" style="margin-top:8px;">
+          <span class="pill pill-jade">Cancer</span>
+          <span class="pill pill-jade">Scorpio</span>
+          <span class="pill pill-jade">Pisces</span>
+          <span class="pill pill-slate">Virgo</span>
+          <span class="pill pill-slate">Capricorn</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-label">Best partner matches (Chinese)</div>
+        <div class="pills" style="margin-top:8px;">
+          <span class="pill pill-jade">Rooster 酉</span>
+          <span class="pill pill-jade">Ox 丑</span>
+          <span class="pill pill-jade">Dragon 辰</span>
+          <span class="pill pill-earth">Rabbit 卯</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-label">Challenging matches (western)</div>
+        <div class="pills" style="margin-top:8px;">
+          <span class="pill pill-terra">Aquarius</span>
+          <span class="pill pill-terra">Leo</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-label">Challenging matches (Chinese)</div>
+        <div class="pills" style="margin-top:8px;">
+          <span class="pill pill-terra">Tiger 寅</span>
+          <span class="pill pill-terra">Monkey 申</span>
+          <span class="pill pill-slate">Pig 亥</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="div">
+    <div class="section-eyebrow">Relationship Scores</div>
+    <div class="meter-row"><span class="meter-label">Long-term loyalty</span><div class="meter-track"><div class="meter-fill" style="width:92%; background:var(--jade-light);"></div></div><span class="meter-val">9.2</span></div>
+    <div class="meter-row"><span class="meter-label">Material provision</span><div class="meter-track"><div class="meter-fill" style="width:90%; background:var(--jade-light);"></div></div><span class="meter-val">9.0</span></div>
+    <div class="meter-row"><span class="meter-label">Emotional expressiveness</span><div class="meter-track"><div class="meter-fill" style="width:62%; background:var(--terra-light);"></div></div><span class="meter-val">6.2</span></div>
+    <div class="meter-row"><span class="meter-label">Romantic spontaneity</span><div class="meter-track"><div class="meter-fill" style="width:55%; background:var(--terra-light);"></div></div><span class="meter-val">5.5</span></div>
+    <div class="meter-row"><span class="meter-label">Conflict flexibility</span><div class="meter-track"><div class="meter-fill" style="width:58%; background:var(--terra-light);"></div></div><span class="meter-val">5.8</span></div>
+  </div>
+</div>
+
+<!-- ════════════ FAMILY ════════════ -->
+<div id="panel-family" class="panel">
+  <div class="section">
+    <div class="section-eyebrow">Family Analysis — All Systems</div>
+    <div class="section-title">Home, Roots & Legacy</div>
+
+    <div class="insight insight-slate"><h>Capricorn Moon — The Family Patriarch</h><p>The Capricorn Moon creates a man who takes family responsibility with the utmost seriousness. He is the provider, the planner, the one who ensures the family's long-term security is protected. His parenting style is firm, structured, and achievement-oriented — he sets high standards for his children and models discipline and hard work. The shadow side is emotional distance: he may struggle to express warmth verbally or physically, and children may experience him as more responsible than emotionally present. Conscious effort to create warmth and playful moments counterbalances this natural reserve.</p></div>
+
+    <div class="insight insight-earth"><h>4th House in Sagittarius — The Expansive Home Base</h><p>With Virgo Rising, the 4th house of home and roots falls in Sagittarius — ruled by Jupiter. This creates a family environment oriented toward growth, learning, philosophical discussion, and expansion. Home is not just a sanctuary — it is a place of ideas and aspiration. He may have grown up in a family that valued education, travel, or intellectual pursuit. As a father and husband, he tends to create a household with high standards, wide horizons, and a drive for the family to achieve and grow together. International connections, overseas property, or a multicultural family dynamic are all possible.</p></div>
+
+    <div class="insight insight-terra"><h>BaZi Year Pillar: Yi Si — Snake Ancestor Energy</h><p>The Year Pillar (Yi Si / Wood Snake) governs childhood and ancestral environment. The Snake (巳) contains hidden Bing Fire (output energy), Wu Earth (wealth), and Geng Metal (authority/Officer) — a rich hidden layer suggesting a family background with resources, authority, and high expectations. The Yin Wood Yi stem indicates a family that shaped him through gentle but persistent pressure toward achievement and refinement. He likely absorbed deep values of substance over show, quality over quantity, and strategic patience as a life philosophy.</p></div>
+
+    <div class="insight insight-jade"><h>Hour Pillar: Yi Wei (Wood Goat) — Children and Late Life</h><p>The Hour Pillar governs children and the legacy of later life. The Goat (未) branch contains hidden Ding Fire (talent expression), Yi Wood (self-resonance), and Ji Earth (Direct Wealth). This suggests children who share his intellectual inclinations and creative spirit, and who ultimately become sources of genuine pride and material support in his elder years. The Yi Wood in the Hour matches the Day Master — a strong resonance indicating that his children reflect his core values and character deeply. Late life (post-60) is enriched by a sense of meaningful legacy.</p></div>
+
+    <div class="insight insight-jade"><h>Wood Snake Family Disposition</h><p>Wood Snakes are deeply connected to family and lineage, maintaining strong family bonds across generations. They are natural family mediators — their strategic intelligence and quiet authority help navigate family dynamics without unnecessary conflict. As fathers, Wood Snake men are intellectually engaged with their children's development, often prioritising education and the cultivation of wisdom over material indulgence. They tend to form lasting family traditions and are motivated by the desire to leave something meaningful behind.</p></div>
+
+    <hr class="div">
+    <div class="section-eyebrow">Family Scores</div>
+    <div class="meter-row"><span class="meter-label">Family responsibility</span><div class="meter-track"><div class="meter-fill" style="width:95%; background:var(--jade-light);"></div></div><span class="meter-val">9.5</span></div>
+    <div class="meter-row"><span class="meter-label">Material provision</span><div class="meter-track"><div class="meter-fill" style="width:92%; background:var(--jade-light);"></div></div><span class="meter-val">9.2</span></div>
+    <div class="meter-row"><span class="meter-label">Legacy building</span><div class="meter-track"><div class="meter-fill" style="width:90%; background:var(--jade-light);"></div></div><span class="meter-val">9.0</span></div>
+    <div class="meter-row"><span class="meter-label">Emotional warmth</span><div class="meter-track"><div class="meter-fill" style="width:62%; background:var(--terra-light);"></div></div><span class="meter-val">6.2</span></div>
+    <div class="meter-row"><span class="meter-label">Family harmony</span><div class="meter-track"><div class="meter-fill" style="width:80%; background:var(--jade-light);"></div></div><span class="meter-val">8.0</span></div>
+  </div>
+</div>
+
+<!-- ════════════ FENG SHUI ════════════ -->
+<div id="panel-fengshui" class="panel">
+  <div class="section">
+    <div class="section-eyebrow">Feng Shui — Personal Energy Map</div>
+    <div class="section-title">Kua Number, Directions & Environment</div>
+
+    <div style="margin-bottom:20px;">
+      <div class="card card-earth">
+        <div class="card-label">Kua Number — Male, Born 1965</div>
+        <div class="card-value xl" style="color:var(--jade);">7 → Dui 兌</div>
+        <div class="card-sub">West Group · Metal element · Lake/Joy archetype<br>Formula: 1+9+6+5=21 → 2+1=3; male: 10−3=7</div>
+      </div>
+    </div>
+
+    <div class="section-eyebrow">Lucky Directions — Kua 7</div>
+    <div class="compass-grid">
+      <div class="compass-dir compass-good"><div class="compass-dir-title">West 🔱 Sheng Qi</div><div class="compass-dir-sub">Wealth & prosperity · Primary power direction · Face West at desk</div></div>
+      <div class="compass-dir compass-good"><div class="compass-dir-title">Northwest 🏥 Tian Yi</div><div class="compass-dir-sub">Health & healing · Sleep with head pointing Northwest</div></div>
+      <div class="compass-dir compass-good"><div class="compass-dir-title">Southwest 💑 Nian Yin</div><div class="compass-dir-sub">Relationships & love · Bedroom in Southwest sector ideally</div></div>
+      <div class="compass-dir compass-good"><div class="compass-dir-title">Northeast 🌱 Fu Wei</div><div class="compass-dir-sub">Personal growth & wisdom · Study or meditation space here</div></div>
+    </div>
+
+    <div class="section-eyebrow" style="margin-top:20px;">Directions to Avoid — Kua 7</div>
+    <div class="compass-grid">
+      <div class="compass-dir compass-bad"><div class="compass-dir-title">East — Huo Hai</div><div class="compass-dir-sub">Bad luck · Avoid front door or desk facing East</div></div>
+      <div class="compass-dir compass-bad"><div class="compass-dir-title">Southeast — Wu Gui</div><div class="compass-dir-sub">Five ghosts · Avoid bedroom in this sector</div></div>
+      <div class="compass-dir compass-bad"><div class="compass-dir-title">South — Liu Sha</div><div class="compass-dir-sub">Six killings · Avoid main working desk facing South</div></div>
+      <div class="compass-dir compass-bad"><div class="compass-dir-title">North — Jue Ming ⚠️</div><div class="compass-dir-sub">Total loss — worst direction. Never sleep with head pointing North</div></div>
+    </div>
+
+    <hr class="div">
+
+    <div class="section-eyebrow">BaZi Element Feng Shui — Yi Wood Day Master</div>
+    <div class="grid-2">
+      <div class="card card-jade">
+        <div class="card-label">Auspicious sectors (BaZi)</div>
+        <div class="pills" style="margin-top:8px;">
+          <span class="pill pill-terra">South (Fire — output)</span>
+          <span class="pill pill-slate">Center/NE (Earth — wealth)</span>
+          <span class="pill pill-jade">East/SE (Wood — self)</span>
+        </div>
+        <div class="card-sub" style="margin-top:8px;">Fire sectors energise Yi Wood's output and expression. Earth sectors activate wealth. Place workspaces and financial symbols in these zones.</div>
+      </div>
+      <div class="card card-terra">
+        <div class="card-label">Sectors to remedy</div>
+        <div class="pills" style="margin-top:8px;">
+          <span class="pill pill-slate">West/NW (Metal — Officer)</span>
+        </div>
+        <div class="card-sub" style="margin-top:8px;">Metal cuts Wood — too much Metal sector exposure creates career pressure and stress. Use Wood element decor (plants) to buffer. Note: Kua 7 lucky directions include West/NW — use Feng Shui remedies to balance BaZi and Kua energies in these sectors.</div>
+      </div>
+    </div>
+
+    <hr class="div">
+
+    <div class="section-eyebrow">Practical Feng Shui Applications</div>
+    <div class="insight insight-earth"><h>Work Desk</h><p>Face West for maximum wealth Qi (Kua 7 Sheng Qi). This aligns with the primary prosperity direction. Place a small plant (Wood element) near the desk to buffer against excessive Metal energy from the West direction. Never sit with your back to the entrance — position the desk diagonally to the door for commanding view and security.</p></div>
+    <div class="insight insight-jade"><h>Bedroom</h><p>Sleep with the top of the head pointing Northwest (Kua 7 Tian Yi / health direction). Bedroom ideally positioned in the Southwest sector of the home (Nian Yin / relationship direction). Remove metal objects and sharp-edged furniture from the bedroom — Metal cuts Yi Wood and can disrupt sleep and relationship harmony.</p></div>
+    <div class="insight insight-terra"><h>Wealth Activation</h><p>Place a water feature (small fountain or aquarium) in the Southeast sector of the home — Water feeds Wood, and the Southeast is traditionally associated with wealth and abundance. Avoid placing the water feature in the North sector (Jue Ming for Kua 7). Use healthy green plants throughout the home to support Yi Wood's natural element.</p></div>
+    <div class="insight insight-slate"><h>2026 Annual Flying Stars</h><p>In 2026, the annual Eight White Prosperity Star lands in the South sector — activate with lighting, red accents, and activity. The Five Yellow Calamity Star visits the North sector — remediate with six-emperor coins and avoid major construction there. For Kua 7, the West Sheng Qi direction aligns powerfully with the annual year energy of the Fire Horse — a particularly auspicious alignment for wealth activation.</p></div>
+  </div>
+</div>
+
+<!-- ════════════ 2026 FORECAST ════════════ -->
+<div id="panel-forecast2026" class="panel">
+  <div class="section">
+    <div class="section-eyebrow">Annual Forecast — Bing Wu Year · Age 61</div>
+    <div class="section-title">2026 — The Fire Horse Year: Late Career Harvest</div>
+
+    <div class="highlight-box">
+      <div class="highlight-title">Bing Wu 丙午 · Yang Fire Horse · Feb 4 2026 – Feb 3 2027 · Age 61</div>
+      <div class="highlight-body">The Fire Horse year brings strong Yang Fire energy to a Wood-dominant chart. For Yi Wood, Fire is the Eating God / Hurting Officer (output, creativity, expression, self-employment) — the annual energy activates creative output, professional expression, and the desire to share accumulated wisdom and expertise. The Snake (Year Pillar) and the Horse (2026 annual branch) form a partial Si-Wu Fire combination — a significant alignment that fires up the natal chart's hidden Fire energy. At age 61, this is a major milestone year: the completion of a 60-year Chinese zodiac cycle, beginning a new life chapter with accumulated wisdom and institutional standing.</div>
+    </div>
+
+    <div class="insight insight-terra"><h>Career — Expression of Mastery</h><p>The Eating God Fire energy of 2026 is ideal for expressing accumulated expertise publicly — writing, speaking, advising, mentoring, or consulting at a senior level. This is not a year for frontline execution but for strategic leadership and knowledge transfer. Career recognition arrives through the quality and depth of what he contributes, not through aggressive advancement. Jupiter in Cancer trines the natal Taurus Sun and Venus — significant professional validation and expanded influence from organisations or institutions that genuinely value his expertise. Retirement planning or transitioning to advisory/board roles is well-starred.</p></div>
+
+    <div class="insight insight-earth"><h>Wealth — Harvest Mode</h><p>The Fire Horse year activates Fire output from Yi Wood — this translates to income from expertise, intellectual property, advisory fees, or consulting-based revenue. Long-term investments and property holdings made in earlier decades begin delivering their full returns. The Si-Wu Fire combination involving the natal Snake Year Pillar is a genuinely auspicious financial signal — investment and asset values may see meaningful appreciation. However, avoid high-risk new ventures: this is harvest time, not planting season. Protect accumulated wealth first, grow it second.</p></div>
+
+    <div class="insight insight-slate"><h>Trading — Fire Activation Improves Conditions</h><p>2026 is meaningfully better than challenging Metal years for Yi Wood trading. The Fire Eating God energy adds confidence, decisiveness, and willingness to act. The Snake-Horse partial Fire combination energises chart sensitivity. However, Capricorn Moon discipline remains essential — the improved energy can lead to overtrading if not managed. Use the improved confidence to refine and execute the system, not to abandon it. Best trading windows: February–May and September–October 2026.</p></div>
+
+    <div class="insight insight-jade"><h>Relationships — Warmth and Appreciation</h><p>Jupiter in Cancer creates a flowing trine to the natal Taurus Venus — one of the most harmonious relationship transits possible. His wife benefits directly from this energy: shared experiences, travel, creative projects together, or simply a period of increased warmth and emotional generosity in the relationship. This is an excellent year for relationship deepening, shared celebrations, and expressing appreciation that may have been taken for granted in busier, more pressured years.</p></div>
+
+    <div class="insight insight-earth"><h>Family — Legacy Consolidation</h><p>At 61, the 60-year cycle completion carries profound family significance in Chinese culture — it marks a full return to the beginning, a time for celebration, reflection, and transition of responsibility. Family bonds are strengthened by this milestone. Children and younger family members look to him for wisdom and guidance with greater intentionality than before. Late-life legacy projects — philanthropic, educational, or financial — are well-starred in 2026. The Hour Pillar's Wood Goat energy indicates that children benefit concretely from his actions this year.</p></div>
+
+    <hr class="div">
+    <div class="section-eyebrow">2026 Monthly Rhythm</div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">Feb – Mar · Year Opening</div><div class="tl-text">Begin new chapter after 60-year cycle completion. Set intentions for the next decade. Career: reposition toward advisory or senior contributory roles. Financial review and long-term estate planning.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">Apr – Jun · Spring Activation</div><div class="tl-text">Best professional visibility window. Expert contributions, public-facing work, and high-level advisory engagements carry outsized impact. Investment monitoring — portfolio may see meaningful movement.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">Jul – Aug · Relationship Focus</div><div class="tl-text">Jupiter-Venus trine peaks. Invest in the marriage relationship — travel, celebration, quality shared experiences. Family milestones carry deep meaning this year.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">Sep – Oct · Caution Zone ⚠️</div><div class="tl-text">Metal months may bring friction or health considerations. Reduce new commitments and speculative activity. Health monitoring — Taurus rules the throat/neck; Capricorn Moon rules bones/joints. Preventive health focus recommended.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">Nov – Dec · Harvest and Reflection</div><div class="tl-text">Consolidate gains. Year-end financial structuring for 2027. Deepening relationships, family time, and preparation for the gentler energy of the Goat year ahead.</div></div>
+    </div>
+
+    <hr class="div">
+    <div class="section-eyebrow">2026 Fortune Scores — Age 61</div>
+    <div class="meter-row"><span class="meter-label">Overall fortune</span><div class="meter-track"><div class="meter-fill" style="width:80%; background:var(--jade-light);"></div></div><span class="meter-val">8.0</span></div>
+    <div class="meter-row"><span class="meter-label">Career / legacy</span><div class="meter-track"><div class="meter-fill" style="width:85%; background:var(--jade-light);"></div></div><span class="meter-val">8.5</span></div>
+    <div class="meter-row"><span class="meter-label">Wealth / assets</span><div class="meter-track"><div class="meter-fill" style="width:82%; background:var(--jade-light);"></div></div><span class="meter-val">8.2</span></div>
+    <div class="meter-row"><span class="meter-label">Trading</span><div class="meter-track"><div class="meter-fill" style="width:70%; background:var(--earth);"></div></div><span class="meter-val">7.0</span></div>
+    <div class="meter-row"><span class="meter-label">Relationships</span><div class="meter-track"><div class="meter-fill" style="width:85%; background:var(--jade-light);"></div></div><span class="meter-val">8.5</span></div>
+    <div class="meter-row"><span class="meter-label">Family</span><div class="meter-track"><div class="meter-fill" style="width:88%; background:var(--jade-light);"></div></div><span class="meter-val">8.8</span></div>
+    <div class="meter-row"><span class="meter-label">Health</span><div class="meter-track"><div class="meter-fill" style="width:72%; background:var(--earth);"></div></div><span class="meter-val">7.2</span></div>
+  </div>
+</div>
+
+<!-- ════════════ 2027 FORECAST ════════════ -->
+<div id="panel-forecast2027" class="panel">
+  <div class="section">
+    <div class="section-eyebrow">Annual Forecast — Ding Wei Year · Age 62</div>
+    <div class="section-title">2027 — The Fire Goat Year: Wisdom & Harvest</div>
+
+    <div class="highlight-box">
+      <div class="highlight-title">Ding Wei 丁未 · Yin Fire Goat · Feb 6 2027 – Jan 25 2028 · Age 62</div>
+      <div class="highlight-body">The Fire Goat year (丁未) brings Yin Fire and Earth energy — a profoundly harmonious combination for Yi Wood. Ding Fire (丁) represents the Hurting Officer for Yi Wood — the star of creative independence, unconventional thinking, and the expression of individual talent outside conventional boundaries. The Goat (未) branch contains hidden Ding Fire, Yi Wood (self-resonance), and Ji Earth (Direct Wealth) — making 2027's hidden elements deeply favourable: self-resonance with the Day Master, output Fire, and wealth Earth all embedded in the year branch. This is a genuinely auspicious year for the Wood-dominant chart. Snake-Goat-Ox (巳未丑) partial combinations activate around the natal chart, harmonising the Snake Year Pillar with 2027's Goat energy.</div>
+    </div>
+
+    <div class="section-eyebrow">BaZi Analysis — Ding Wei vs Yi Wood Day Master</div>
+
+    <div class="insight insight-jade"><h>Ding Fire — The Hurting Officer Star: Creative Independence</h><p>For Yi Wood, Ding Fire (Hurting Officer) is the energy of creative expression, unconventional brilliance, and independent expertise. Unlike the Eating God (which expresses through conventional channels), the Hurting Officer breaks norms and expresses the deepest individual truth. At age 62, this manifests as a man who has earned the right to operate on his own terms — consulting, advising, writing, or leading in ways that are genuinely his own, not filtered through institutional constraint. 2027 supports projects that reflect his authentic expertise and unique perspective.</p></div>
+
+    <div class="insight insight-earth"><h>Wei Goat Branch — Ji Earth Direct Wealth: Stable Income</h><p>The Goat (未) contains Ji Earth as the primary hidden stem. For Yi Wood, Ji Earth is the Direct Wealth Star — steady, reliable, earned income. This is the most auspicious wealth signal of the two types: stable, predictable, and growing. 2027 is a year where income from legitimate expertise, advisory relationships, and established asset holdings continues to produce reliably. New income streams established in 2026 consolidate into reliable recurring revenue. Property and long-term investments continue to mature favourably.</p></div>
+
+    <div class="insight insight-terra"><h>Snake-Goat Interaction — The Natal Year Pillar Harmonises</h><p>The natal Year Pillar (Yi Si / Wood Snake) and the 2027 annual Goat (Wei) interact in a nuanced but broadly positive way. The Snake contains Fire, the Goat contains Fire and Earth — the hidden Fire in both activates a gentle resonance. This is not a clash or punishment year: it is a year of subtle harmonisation between the natal chart's ancestral energy and the annual flow. Chinese astrology describes 2027 as a year where Tigers soften their approach — and for the more reserved Wood Snake nature, this softer annual energy is a natural and comfortable fit.</p></div>
+
+    <hr class="div">
+    <div class="section-eyebrow">Career — 2027</div>
+
+    <div class="insight insight-jade"><h>Independent Expertise at Its Peak</h><p>The Hurting Officer energy of 2027 is ideal for independent, creative, or non-conventional professional expression. Advisory boards, independent consulting, thought leadership, writing, or teaching — all carry strong fortune. This is the year to assert genuine intellectual independence in the professional sphere. Institutional constraints may feel more chafing than usual — and that friction is the chart's signal to step further into authentic, self-directed work. Career advancement comes from quality of contribution, not hierarchical positioning.</p></div>
+
+    <div class="insight insight-earth"><h>Western Transits — Jupiter in Leo Mid-2027</h><p>Jupiter moves into Leo around mid-2027, forming a challenging square to the natal Taurus Sun and Venus — a period of tension between expansion ambitions and the need for stability. This transit pushes beyond the comfort zone and may bring both opportunity and cost: significant professional opportunities that require real investment of time, energy, or capital. Evaluate carefully — not every opportunity that appears large is worth pursuing at 62. The Capricorn Moon's discipline is essential in filtering these choices.</p></div>
+
+    <hr class="div">
+    <div class="section-eyebrow">Wealth & Trading — 2027</div>
+
+    <div class="insight insight-earth"><h>Direct Wealth Year — Stable and Growing</h><p>2027's Ji Earth Direct Wealth in the Goat branch creates the most stable wealth energy possible for Yi Wood. This is not the year of windfall or dramatic appreciation — it is the year of reliable, steady, growing income from legitimate expertise and established assets. Property values, dividend income, and advisory fees all continue their consistent trajectory. The contrast with the more volatile Fire Horse energy of 2026 is significant: 2027 feels more settled, more predictable, and more sustainable financially.</p></div>
+
+    <div class="insight insight-jade"><h>Trading — Better Than Average, Structured Approach</h><p>2027's Yin Fire energy is more measured than 2026's Yang Fire for trading. The chart's natural discipline (Capricorn Moon) combines well with the Hurting Officer's independent analytical thinking to create conditions for more confident, well-reasoned trading decisions. The Goat year's Earth energy (wealth) in the branch is supportive. Best months for trading activity: February–April (Tiger/Rabbit months) and October–November (Dog/Pig months). Caution: July–August when Metal months temporarily increase Seven Killings pressure on the Yi Wood Day Master.</p></div>
+
+    <div class="warn-box">⚠️ 2027 watchpoint: The Goat (未) and Day Branch Ox (丑) form a direct clash (丑未冲). This Chou-Wei clash energises the Earth element — which can be positive for wealth but may also bring disruption to existing structures, property-related complications, or relationship adjustments. Keep existing agreements and contracts clean and documented.</div>
+
+    <hr class="div">
+    <div class="section-eyebrow">Relationships — 2027</div>
+
+    <div class="insight insight-jade"><h>The Goat Year — Depth, Creativity, and Emotional Renewal</h><p>The Goat's harmonising, creative energy resonates well with the Pisces 7th house (marriage) energy. 2027 invites deeper emotional communication, creative pursuits shared with his wife, and a renewed appreciation for what has been built together. The Hurting Officer star can occasionally create unconventional desires or a sense of restlessness — it's important to channel this into productive shared creativity rather than isolation. Travel, cultural exploration, or a meaningful shared project is recommended. Long-standing relationships deepen through the year's quieter, more introspective rhythm.</p></div>
+
+    <hr class="div">
+    <div class="section-eyebrow">Family — 2027</div>
+
+    <div class="insight insight-terra"><h>Legacy, Grandchildren, and Knowledge Transfer</h><p>The Hour Pillar's Wood Goat energy resonates directly with 2027's Goat year — an unusual and meaningful alignment. This activates the legacy and children's domain in a very positive way. Whether through grandchildren, mentoring younger family members, or establishing formal legacy structures (trusts, foundations, property arrangements), 2027 is a year where family legacy becomes concrete and tangible. The Goat's Earth wealth hidden stem supports tangible asset arrangements for future generations.</p></div>
+
+    <hr class="div">
+    <div class="section-eyebrow">2026 vs 2027 — Comparison</div>
+    <div style="overflow-x:auto; margin-top:12px;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Domain</th>
+            <th style="color:var(--terra);">2026 Fire Horse 🐴</th>
+            <th style="color:var(--jade);">2027 Fire Goat 🐐</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color:var(--slate2);">Overall energy</td>
+            <td style="color:var(--ink2);">🔥 Yang — expressive, visible</td>
+            <td style="color:var(--ink2);">🕯️ Yin — creative, inward</td>
+          </tr>
+          <tr>
+            <td style="color:var(--slate2);">Career</td>
+            <td style="color:var(--ink2);">8.5 — Senior recognition</td>
+            <td style="color:var(--ink2);">8.2 — Independent mastery</td>
+          </tr>
+          <tr>
+            <td style="color:var(--slate2);">Wealth</td>
+            <td style="color:var(--ink2);">8.2 — Harvest begins</td>
+            <td style="color:var(--ink2);">8.5 — Stable, growing</td>
+          </tr>
+          <tr>
+            <td style="color:var(--slate2);">Trading</td>
+            <td style="color:var(--ink2);">7.0 — Fire activates</td>
+            <td style="color:var(--ink2);">7.2 — Calmer, measured</td>
+          </tr>
+          <tr>
+            <td style="color:var(--slate2);">Relationships</td>
+            <td style="color:var(--ink2);">8.5 — Warmth, Jupiter trine</td>
+            <td style="color:var(--ink2);">8.0 — Depth, creativity</td>
+          </tr>
+          <tr>
+            <td style="color:var(--slate2);">Family</td>
+            <td style="color:var(--ink2);">8.8 — Milestone year</td>
+            <td style="color:var(--ink2);">9.0 — Legacy activation</td>
+          </tr>
+          <tr>
+            <td style="color:var(--slate2);">Health</td>
+            <td style="color:var(--ink2);">7.2 — Monitor Metal months</td>
+            <td style="color:var(--ink2);">7.5 — Gentler pace</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="warn-box" style="margin-top:16px;">⚠️ 2028 preview: The Earth Monkey year (戊申) brings a Snake-Monkey clash (巳申冲) — directly activating the natal Year Pillar Snake. This is one of the more significant clash years for the 1965 Wood Snake. Health, major decisions, and financial structures should be secured in 2027 to buffer the 2028 turbulence.</div>
+
+    <hr class="div">
+    <div class="section-eyebrow">2027 Fortune Scores — Age 62</div>
+    <div class="meter-row"><span class="meter-label">Overall fortune</span><div class="meter-track"><div class="meter-fill" style="width:82%; background:var(--jade-light);"></div></div><span class="meter-val">8.2</span></div>
+    <div class="meter-row"><span class="meter-label">Career / legacy</span><div class="meter-track"><div class="meter-fill" style="width:82%; background:var(--jade-light);"></div></div><span class="meter-val">8.2</span></div>
+    <div class="meter-row"><span class="meter-label">Wealth / assets</span><div class="meter-track"><div class="meter-fill" style="width:85%; background:var(--jade-light);"></div></div><span class="meter-val">8.5</span></div>
+    <div class="meter-row"><span class="meter-label">Trading</span><div class="meter-track"><div class="meter-fill" style="width:72%; background:var(--earth);"></div></div><span class="meter-val">7.2</span></div>
+    <div class="meter-row"><span class="meter-label">Relationships</span><div class="meter-track"><div class="meter-fill" style="width:80%; background:var(--jade-light);"></div></div><span class="meter-val">8.0</span></div>
+    <div class="meter-row"><span class="meter-label">Family</span><div class="meter-track"><div class="meter-fill" style="width:90%; background:var(--jade-light);"></div></div><span class="meter-val">9.0</span></div>
+    <div class="meter-row"><span class="meter-label">Health</span><div class="meter-track"><div class="meter-fill" style="width:75%; background:var(--earth);"></div></div><span class="meter-val">7.5</span></div>
+  </div>
+</div>
+
+</main>
+
+<div class="disclaimer">
+  Sources: Swiss Ephemeris (planetary positions April 20 1965), Qiong Tong Bao Jian (BaZi methodology), Eight Mansions Feng Shui (Kua 7), cafeastrology.com, yourchineseastrology.com, whatismyanimal.com, thechinajourney.com<br>
+  This reading synthesises Western Astrology, Chinese BaZi Four Pillars of Destiny, and Classical Feng Shui for the birth data: 20 April 1965, ~1:30 PM, Singapore (GMT+8).<br>
+  Note: Birth time is given as "between 1–2pm" — readings use ~1:30pm as the midpoint. Precise Ascendant degree may shift by ±1° within this window, though the Virgo Rising conclusion is confirmed for the full 1–2pm range.<br>
+  For entertainment and self-reflection purposes. Consult a certified BaZi or Feng Shui practitioner for personalised professional consultation.
+</div>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
